@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Exam Scores Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Student Exam Scores Analysis and Logistic Regression Model</h1>
+    <h2>Upload CSV File</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if accuracy %}
+    <h2>Model Results</h2>
+    <p><strong>Accuracy:</strong> {{ accuracy }}</p>
+    <p><strong>Classification Report:</strong></p>
+    <pre>{{ classification_report }}</pre>
+    <p><strong>Confusion Matrix:</strong></p>
+    <pre>{{ confusion_matrix }}</pre>
+    {% endif %}
+</body>
+</html>
